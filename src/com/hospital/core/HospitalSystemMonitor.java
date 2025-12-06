@@ -7,7 +7,7 @@ import java.util.Queue;
  * Part A: Monitor-Based Synchronization
  * Protects the shared sample queue and system configuration.
  */
-public class HospitalSystemMonitor {
+public class HospitalSystemMonitor implements HospitalMonitor {
 
     // --- Shared Resources ---
     private final Queue<String> sampleQueue = new LinkedList<>();

@@ -1,14 +1,14 @@
-package com.hospital.actors; // Correct package
+package com.hospital.actors; 
 
-import com.hospital.core.HospitalSystemMonitor; // Import the Monitor
+import com.hospital.core.HospitalMonitor;
 import java.util.Random;
 
 public class Analyzer implements Runnable {
-    private final HospitalSystemMonitor monitor;
+    private final HospitalMonitor monitor;
     private final String id;
     private final Random random = new Random();
 
-    public Analyzer(HospitalSystemMonitor monitor, String id) {
+    public Analyzer(HospitalMonitor monitor, String id) {
         this.monitor = monitor;
         this.id = id;
     }

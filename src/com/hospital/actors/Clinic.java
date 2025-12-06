@@ -1,14 +1,14 @@
 package com.hospital.actors; // Correct package
 
-import com.hospital.core.HospitalSystemMonitor; // Import the Monitor
+import com.hospital.core.HospitalMonitor; // Import the Monitor
 import java.util.Random;
 
 public class Clinic implements Runnable {
-    private final HospitalSystemMonitor monitor;
+    private final HospitalMonitor monitor;
     private final String id;
     private final Random random = new Random();
 
-    public Clinic(HospitalSystemMonitor monitor, String id) {
+   public Clinic(HospitalMonitor monitor, String id){
         this.monitor = monitor;
         this.id = id;
     }
