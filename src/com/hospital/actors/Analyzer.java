@@ -1,4 +1,4 @@
-package com.hospital.actors; 
+package com.hospital.actors;
 
 import com.hospital.core.HospitalMonitor;
 import java.util.Random;
@@ -6,25 +6,28 @@ import java.util.Random;
 public class Analyzer implements Runnable {
     private final HospitalMonitor monitor;
     private final String id;
+    private final int sleepTime; // <--- NEW: Stores the speed setting
     private final Random random = new Random();
 
-    public Analyzer(HospitalMonitor monitor, String id) {
+    // Constructor now asks for 'sleepTime'
+    public Analyzer(HospitalMonitor monitor, String id, int sleepTime) {
         this.monitor = monitor;
         this.id = id;
+        this.sleepTime = sleepTime;
     }
 
     @Override
     public void run() {
         try {
             while (!Thread.currentThread().isInterrupted()) {
-                // Get sample (will wait if queue is empty)
                 String sample = monitor.processSample();
                 
-                if (sample == null) break; // Exit on shutdown signal
+                if (sample == null) break; 
 
-                // Simulate processing time (Analyzer takes time to test sample)
                 System.out.println("      ==> [" + id + "] Processed " + sample);
-                Thread.sleep(random.nextInt(1000) + 500); 
+                
+                // Sleep for the configured processing time
+                Thread.sleep(sleepTime + random.nextInt(100)); 
             }
         } catch (InterruptedException e) {
             System.out.println(id + " stopped.");
