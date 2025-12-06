@@ -1,6 +1,7 @@
 # Hospital Diagnostics Coordination System
 
-**Student ID:** [Your ID Here]
+**Student ID:** W2053386
+
 **Module:** 7SENG007C Concurrent and Distributed Systems
 
 ## Overview
