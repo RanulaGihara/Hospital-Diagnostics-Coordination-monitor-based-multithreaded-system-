@@ -17,18 +17,13 @@ public class Supervisor implements Runnable {
     public void run() {
         try {
             while (!Thread.currentThread().isInterrupted()) {
-                // Wait a long time between updates (Supervisors work occasionally)
                 Thread.sleep(random.nextInt(3000) + 4000); 
 
-                // 1. Enter Writer Mode (Exclusive Lock)
                 monitor.startWriting();
 
-                // 2. Critical Section (Modifying System)
-                // No one else can read or write during this time
                 System.out.println("!!! [Supervisor] " + id + " CHANGING POLICIES (LOCK HELD) !!!");
-                Thread.sleep(500); // Simulate reconfiguration time
+                Thread.sleep(500); 
                 
-                // 3. Exit Writer Mode
                 monitor.stopWriting();
                 System.out.println("!!! [Supervisor] " + id + " released lock.");
             }
